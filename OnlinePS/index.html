@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>YDJSIR：相册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" type="image/x-icon" href="icon.ico" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link
+      rel="stylesheet"
+      href="css/cropper.css"
+    />
+    <script src="js/cropper.js"></script>
+    <script src="js/caman.full.min.js"></script>
+    <script src="js/lena.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <table style="width: 100%; vertical-align: middle">
+        <tr>
+          <td style="width: 60px">
+            <a href="index.html">
+              <img src="icon.ico" />
+            </a>
+          </td>
+          <td style="width: fit-content">
+            <h1 style="text-align: left">图像处理</h1>
+          </td>
+
+          <td
+            style="float: right; vertical-align: middle; width: fit-content"
+          ></td>
+        </tr>
+      </table>
+    </header>
+
+    <section>
+      <div class="graph">
+        <canvas id="banner"></canvas>
+      </div>
+      <table
+        style="
+          width: 95%;
+          background-color: #1d1f20;
+          vertical-align: middle;
+          margin: auto;
+        "
+      >
+        <tr style="text-align: center">
+          <td style="text-align: left">
+            <form>
+              <input
+                type="file"
+                id="upload-file"
+                style="margin: center; text-align: center"
+              />
+            </form>
+            <a id="download">
+              <button type="button" id="cropImageLink">下载结果</button>
+            </a>
+          </td>
+          <td style="text-align: right">
+            <em id="zoomNotice">请使用按钮缩放！</em>
+            <button class="button-link" id="zoomIn">&nbsp;放大&nbsp;</button>
+            <button class="button-link" id="zoomOut">&nbsp;缩小&nbsp;</button>
+          </td>
+          <td style="text-align: right" id="ColorModeArea">
+            <button class="button-link" id="lightUp">&nbsp;亮度+&nbsp;</button>
+            <button class="button-link" id="lightDown">
+              &nbsp;亮度-&nbsp;
+            </button>
+            <button class="button-link" id="contrastUp">对比度+</button>
+            <button class="button-link" id="contrastDown">对比度-</button>
+            <button class="button-link" id="saturationUp">饱和度+</button>
+            <button class="button-link" id="saturationDown">饱和度-</button>
+            <button class="button-link" id="exposureUp">曝光度+</button>
+            <button class="button-link" id="exposureDown">曝光度-</button>
+          </td>
+        </tr>
+        <tr id="fliters">
+          <td style="text-align: right;" >
+            滤镜选项和图像风格
+          </td>
+          <td style="text-align: right;">
+            <button class="button-link-2" id="fliter1">Red</button>
+            <button class="button-link-2" id="fliter2">Grayscale</button>
+            <button class="button-link-2" id="fliter3">Invert</button>
+          </td>
+          <td style="text-align: right;"> 
+            <button class="button-link-2" id="fliter4">Roberts</button>
+            <button class="button-link-2" id="fliter5">Sepia</button>
+            <button class="button-link-2" id="fliter6">Laplacian</button>
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: left">
+            <p></p>
+            <button class="button-link" id="endCrop">旋转与裁剪</button>
+          </td>
+          <td style="text-align: center" id="cropperModeArea">
+            <button class="button-link" id="resetCrop"></button>
+            <button class="button-link" id="leftRotate"></button>
+            <button class="button-link" id="rightRotate"></button>
+            <button class="button-link" id="cropNow"></button>
+          </td>
+          <td style="text-align: right">
+            <button
+              class="button-link-red"
+              id="reset"
+            >
+              重置画布
+            </button>
+          </td>
+        </tr>
+      </table>
+      <div style="margin-bottom: 25px"></div>
+    </section>
+    <script src="js/onlineps.js"></script>
+    <footer>
+      <div style="margin-right: 20px">Powered by YDJSIR, 2021</div>
+    </footer>
+  </body>
+</html>

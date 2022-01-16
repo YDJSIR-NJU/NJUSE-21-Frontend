@@ -1,0 +1,143 @@
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>YDJSIR：登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" type="image/x-icon" href="icon.ico" />
+    <link rel="stylesheet" href="css/forms.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script src="js/forge-sha256.min.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <table style="width: 95%; vertical-align: middle; margin: 10px">
+        <tr>
+          <td style="width: 66px; margin: 20px">
+            <a href="index.html">
+              <img src="icon.ico" />
+            </a>
+          </td>
+          <td>
+            <h1>YDJSIR：相册</h1>
+          </td>
+        </tr>
+      </table>
+    </header>
+    <section>
+      <div id="container-login">
+        <a href="index.html">
+          <div id="title">
+            <h1>登录</h1>
+            <i>YDJSIR</i>
+          </div>
+        </a>
+        <form id="userLogin">
+          <div class="input">
+            <div class="input-addon">
+              <img src="img/user.png" height="26" width="26" />
+            </div>
+            <input
+              id="username"
+              placeholder="用户名"
+              type="text"
+              required
+              class="validate"
+              autocomplete="off"
+              oninvalid="setCustomValidity('用户名不能为空')"
+              oninput="setCustomValidity('')"
+            />
+          </div>
+
+          <div class="clearfix"></div>
+
+          <div class="input">
+            <div class="input-addon">
+              <img src="img/password.png" height="26" width="26" />
+            </div>
+            <input
+              id="password"
+              placeholder="密码"
+              type="password"
+              required
+              class="validate"
+              autocomplete="off"
+              oninvalid="setCustomValidity('密码不能为空')"
+              oninput="setCustomValidity('')"
+            />
+          </div>
+          <div class="clearfix"></div>
+
+          <div
+            class="input"
+            id="captchabox"
+            style="height: 50px; vertical-align: middle"
+          >
+            <div id="captchaPic" class="input-addon" style="float: left">
+              <button
+                class="button-link"
+                style="margin: auto; color: aliceblue"
+                id="getcaptchapic"
+              >
+                点击获取
+              </button>
+            </div>
+            <input
+              id="captcha"
+              placeholder="验证码"
+              type="text"
+              required
+              class="validate"
+              style="width: 120px; margin-top: 7px"
+              autocomplete="off"
+              oninvalid="setCustomValidity('验证码不能为空')"
+              oninput="setCustomValidity('')"
+            />
+          </div>
+          <script>
+            $.ajax({
+              method: "GET",
+              xhrFields: { withCredentials: true },
+              url: "http://localhost:3001/getcaptcha",
+              data: {},
+            }).done(function (data, status) {
+              console.log(status);
+              if (status == "success") {
+                // console.log(data);
+                const captcha = document.getElementById("captchaPic");
+                captcha.innerHTML = data;
+                console.log(captcha);
+              }
+            });
+          </script>
+          <div class="clearfix">点击验证码图片可以刷新</div>
+
+          <input type="submit" value="现在登录" id="submitbutton" />
+        </form>
+
+        <div class="forgot-password">
+          <a href="#">忘记密码?</a>
+        </div>
+
+        <div class="switch">
+          <div style="margin-bottom: 10px">
+            <a>没有账号?</a>
+          </div>
+          <a href="Register.html"
+            ><button class="button-link">立即注册</button></a
+          >
+        </div>
+
+        <div class="privacy">
+          <a href="#">查看隐私条款</a>
+        </div>
+      </div>
+      <script src="js/login.js"></script>
+    </section>
+    <footer>
+      <div style="margin-right: 20px">Powered by YDJSIR, 2021</div>
+    </footer>
+  </body>
+</html>

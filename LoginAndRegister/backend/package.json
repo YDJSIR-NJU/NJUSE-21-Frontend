@@ -1,0 +1,21 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "YDJSIR's DEMO account service in Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "YDJSIR",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "",
+    "body-parser": "",
+    "express": "",
+    "jsonwebtoken": "",
+    "mysql": "",
+    "svg-captcha": "^1.4.0",
+    "csprng":"",
+    "express-session":""
+  }
+}

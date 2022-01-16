@@ -1,0 +1,190 @@
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>YDJSIR：注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" type="image/x-icon" href="icon.ico" />
+    <link rel="stylesheet" href="css/forms.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script src="js/forge-sha256.min.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <table style="width: 95%; vertical-align: middle; margin: 10px">
+        <tr>
+          <td style="width: 66px; margin: 20px">
+            <a href="index.html">
+              <img src="icon.ico" />
+            </a>
+          </td>
+          <td>
+            <h1>YDJSIR：相册</h1>
+          </td>
+        </tr>
+      </table>
+    </header>
+    <section>
+      <div id="container-register">
+        <a href="index.html">
+          <div id="title">
+            <h1>注册</h1>
+            <i>YDJSIR</i>
+          </div>
+        </a>
+        <form id="userRegister">
+          <div class="input">
+            <div class="input-addon">
+              <img src="img/mail.png" height="26" width="26" />
+            </div>
+            <input
+              id="email"
+              placeholder="电子邮箱地址"
+              type="email"
+              required
+              class="validate"
+              autocomplete="oFF"
+              oninvalid="setCustomValidity('输入可能有误')"
+              oninput="setCustomValidity('')"
+            />
+          </div>
+
+          <div class="input">
+            <div class="input-addon">
+              <img src="img/user.png" height="26" width="26" />
+            </div>
+            <input
+              id="username"
+              placeholder="用户名"
+              type="text"
+              required
+              class="validate"
+              autocomplete="off"
+              oninvalid="setCustomValidity('用户名不能为空')"
+              oninput="setCustomValidity('')"
+            />
+          </div>
+
+          <div class="input">
+            <div class="input-addon">
+              <img src="img/password.png" height="26" width="26" />
+            </div>
+            <input
+              id="password"
+              placeholder="密码"
+              type="password"
+              required
+              class="validate"
+              autocomplete="off"
+            />
+          </div>
+          <div id="passwordcheck" style="width: 90%; margin: auto">
+            密码强度需要符合要求
+          </div>
+          <div class="input">
+            <div class="input-addon">
+              <img src="img/password.png" height="26" width="26" />
+            </div>
+            <input
+              id="repassword"
+              placeholder="确认密码"
+              type="password"
+              required
+              class="validate"
+              autocomplete="off"
+              oninvalid="setCustomValidity('两次输入的密码不一致')"
+            />
+          </div>
+          <div id="passwordtips" style="width: 90%; margin: auto">
+            请再次输入密码以确认
+          </div>
+          <div
+            style="
+              text-align: center;
+              width: 88%;
+              margin: auto;
+              color: #a2a2a2;
+              padding: 5px;
+            "
+          >
+            密码长度应在8到30之间，且有大小写字母、数字和英文特殊符号中的至少两种。
+          </div>
+          <div
+            class="input"
+            id="captchabox"
+            style="height: 50px; vertical-align: middle"
+          >
+            <div id="captchaPic" class="input-addon" style="float: left">
+              <button
+                class="button-link"
+                style="margin: auto; color: aliceblue"
+                id="getcaptchapic"
+              >
+                点击获取
+              </button>
+            </div>
+            <input
+              id="captcha"
+              placeholder="验证码"
+              type="text"
+              required
+              class="validate"
+              style="width: 120px; margin-top: 7px"
+              autocomplete="off"
+              oninvalid="setCustomValidity('验证码不能为空')"
+              oninput="setCustomValidity('')"
+            />
+          </div>
+          <script>
+            $.ajax({
+              method: "GET",
+              xhrFields: { withCredentials: true },
+              url: "http://localhost:3001/getcaptcha",
+              data: {},
+            }).done(function (data, status) {
+              console.log(status);
+              if (status == "success") {
+                // console.log(data);
+                const captcha = document.getElementById("captchaPic");
+                captcha.innerHTML = data;
+                console.log(captcha);
+              }
+            });
+          </script>
+          <div class="clearfix">点击验证码图片可以刷新</div>
+          <div class="checkboxitem">
+            <input
+              type="checkbox"
+              id="privacypolicycheck"
+              name="privacycheck"
+              value="privacycheck"
+              oninvalid="setCustomValidity('如果要继续，请阅读并同意我们的隐私条款')"
+            />
+            <span style="color: #ddd">我已阅读隐私条款</span>
+          </div>
+
+          <input type="submit" value="现在注册" id="submitbutton" />
+        </form>
+
+        <div class="switch">
+          <div style="margin-bottom: 10px">
+            <a>已有帐号?</a>
+          </div>
+          <a href="Login.html">
+            <button class="button-link">立即登录</button>
+          </a>
+        </div>
+
+        <div class="privacy">
+          <a href="#">查看隐私条款</a>
+        </div>
+      </div>
+      <script src="js/register.js"></script>
+    </section>
+    <footer>
+      <div style="margin-right: 20px">Powered by YDJSIR, 2021</div>
+    </footer>
+  </body>
+</html>

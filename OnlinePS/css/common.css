@@ -1,0 +1,56 @@
+.button-link {
+  padding: 5px 5px;
+  background: #373e4a;
+  color: var(--text-color);
+  border: 0 none;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: large;
+}
+
+.button-link-red {
+  padding: 5px 5px;
+  background: red;
+  color: var(--text-color);
+  border: 0 none;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: large;
+}
+
+.button-link-2 {
+  padding: 5px 5px;
+  background: #6a6c6d;
+  color: var(--text-color);
+  border: 0 none;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: large;
+}
+
+h1 {
+  font-size: xx-large;
+  font-weight: normal;
+  margin: 0 auto;
+}
+
+/*
+    Show identity
+*/
+footer {
+  -moz-column-count: 1; /* Firefox */
+  -webkit-column-count: 1; /* Safari and Chrome */
+  column-count: 1;
+  width: 100%;
+  margin-right: 0;
+  height: 16px;
+  font-size: 12px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #1a1c1d;
+  position: fixed;
+  bottom: 0;
+  text-align: right;
+  color: #ffffff;
+}

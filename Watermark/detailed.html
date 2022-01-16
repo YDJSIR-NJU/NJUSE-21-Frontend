@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>YDJSIR：相册</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" type="image/x-icon" href="icon.ico" />
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/common.css" />
+</head>
+
+<body>
+  <header>
+    <table style="width: 100%; vertical-align: middle">
+      <tr>
+        <td style="width: 60px">
+          <a href="index.html">
+            <img src="icon.ico" />
+          </a>
+        </td>
+        <td style="width: fit-content">
+          <h1 style="text-align: left">相册</h1>
+        </td>
+        <td style="vertical-align: middle; width: fit-content; text-align: left;">
+          <p>加载有延迟，请耐心等待</p>
+        </td>
+      </tr>
+    </table>
+  </header>
+
+  <!-- 原图 -->
+  <section>
+    <div class="graph">
+      <img src="img/banner.png" loading="lazy" />
+    </div>
+    <table style="
+          width: auto;
+          background-color: #1d1f20;
+          vertical-align: middle;
+          margin: auto;
+        ">
+      <tr>
+        <td style="width: 15%; text-align: center">
+          <p>可见水印效果展示在下方</p>
+        </td>
+        <td style="width: auto; text-align: center">
+          <h1 style="text-align: center; padding: 20px">原图</h1>
+        </td>
+        <td style="width: 15%; text-align: center">
+          <p>不可见水印效果展示在下下方</p>
+        </td>
+      </tr>
+    </table>
+    <div style="margin-bottom: 25px"></div>
+  </section>
+
+  <!--可见水印 -->
+  <section>
+    <div class="graph">
+      <img id="visible_watermark" src="img/banner.png" loading="lazy" />
+      <script src="js/canvas-visible.js"></script>
+      <script>
+        // 调用
+        __picWM({
+          url: "img/banner.png",
+          content: "YDJSIR",
+          cb: (base64Url) => {
+            document.querySelector("#visible_watermark").src = base64Url; //  把图片替换为canvas的绘图结果
+          },
+        });
+      </script>
+      <script></script>
+    </div>
+    <table style="
+          width: auto;
+          background-color: #1d1f20;
+          vertical-align: middle;
+          margin: auto;
+        ">
+      <tr>
+        <td style="width: 5%; text-align: left">
+
+        </td>
+        <td style="width: auto; text-align: center">
+          点击下方按钮切换效果<br /><br />
+          <button class="button-link" id="VisibleWatermark">查看原图</button>
+          <script>
+            var status1 = 0;
+            var btn1 = document.getElementById("VisibleWatermark");
+            btn1.style = "background-color: #FF1122";
+            btn1.addEventListener(
+              "click",
+              function () {
+                console.log("Status1: " + status1);
+                if (status1 == 0) {
+                  status1 = 1;
+                  console.log("RESET: " + status1);
+                  var imgi = document.getElementById("visible_watermark");
+                  imgi.src = "img/banner.png";
+                  btn1.textContent = "可见水印";
+                  btn1.style = "background-color: #FF1122";
+                } else if (status1 === 1) {
+                  __picWM({
+                    url: "img/banner.png",
+                    content: "YDJSIR",
+                    cb: (base64Url) => {
+                      document.querySelector("#visible_watermark").src = base64Url;
+                    },
+                  });
+                  status1 = 0;
+                  btn1.textContent = "查看原图";
+                  btn1.style = "background-color: #373e4a";
+                }
+              },
+              false
+            );
+          </script>
+        </td>
+        <td style="width: 5%; text-align: right">
+
+        </td>
+      </tr>
+    </table>
+    <div style="margin-bottom: 25px"></div>
+  </section>
+
+  <!-- 添加不可见水印 -->
+  <section>
+    <div class="graph">
+      <canvas id="invisible_watermark"></canvas>
+      <script src="js/canvas-invisible.js"></script>
+      <script>
+        encodeImg("img/banner.png", "invisible_watermark", "R");
+      </script>
+    </div>
+    <table style="
+          width: auto;
+          background-color: #1d1f20;
+          vertical-align: middle;
+          margin: auto;
+        ">
+      <tr>
+        <td style="width: 5%; text-align: left">
+
+        </td>
+        <td style="width: auto; text-align: center">
+          点击下方按钮切换效果<br /><br />
+          <button class="button-link" id="InVisibleWatermark">
+            查看不可见水印
+          </button>
+          <script>
+            var status2 = 0;
+            var btn2 = document.getElementById("InVisibleWatermark");
+            btn2.addEventListener(
+              "click",
+              function () {
+                console.log("Status2: " + status2);
+                if (status2 == 0) {
+                  decodeImg("invisible_watermark", "R");
+                  status2 = 1;
+                  btn2.textContent = "查看无水印原图";
+                } else if (status2 == 1) {
+                  resetImg("invisible_watermark", "img/banner.png");
+                  status2 = 2;
+                  btn2.textContent = "添加不可见水印";
+                  btn2.style = "background-color: #FF1122";
+                } else if (status2 == 2) {
+                  encodeImg("img/banner.png", "invisible_watermark", "R");
+                  status2 = 0;
+                  btn2.textContent = "查看有原图水印";
+                  btn2.style = "background-color: #373e4a";
+                }
+              },
+              false
+            );
+          </script>
+        </td>
+        <td style="width: 5%; text-align: right">
+
+        </td>
+      </tr>
+    </table>
+
+    <div style="margin-bottom: 40px"></div>
+  </section>
+  <footer>
+    <div style="margin-right: 20px">Powered by YDJSIR, 2021</div>
+  </footer>
+</body>
+
+</html>

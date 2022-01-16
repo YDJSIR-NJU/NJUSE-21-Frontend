@@ -1,0 +1,227 @@
+:root {
+  --text-color: #f2f2f2;
+  --input-bg-color: #373b3d;
+  --input-text-color: var(--input-text-color);
+}
+
+/* 
+    A moving view of blue sky with shning stars
+    Powered by YDJSIR using native HTML5 API
+*/
+body{
+    font-family: 'Microsoft-YaHei';
+    color: #F2F2F2;             /* Color of fonts */
+    margin: 0 auto;
+    background-image: url("https://ydjsir-cn.oss-cn-shenzhen.aliyuncs.com/25_2.jpg");
+    background-size: 444%;
+    animation:bg_anim 40s ease infinite;
+    -webkit-animation: bg_anim 40s ease infinite;
+    -moz-animation: bg_anim 40s ease infinite;
+}
+
+@keyframes bg_anim
+{
+    0% {
+        background-position: 0% 0%;
+    }
+    25% {
+        background-position: 20% 0%;
+    }
+    50% {
+        background-position: 10% 10%;
+    }
+    75% {
+        background-position: 20% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+#container-login {
+  background-color: rgba(16, 16, 16, 0.8);
+  position: relative;
+  margin-top: 20%;
+  margin: auto;
+  width: 366px;
+  height: auto;
+  border-radius: 0.35em;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+#container-register {
+  background-color: rgba(16, 16, 16, 0.8);
+  position: relative;
+  top: 20%;
+  margin: auto;
+  width: 366px;
+  height: auto;
+  border-radius: 0.35em;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+form {
+  padding: 15px;
+}
+
+header{
+    height: 20%;
+}
+
+#title {
+  position: relative;
+  background-color: #1a1c1d;
+  color: var(--text-color);
+  width: 100%;
+  padding: 10px 0px;
+  border-radius: 0.35em;
+  font-size: large;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 
+-----------------------------------
+Input items
+-----------------------------------
+*/
+
+/*
+    Item in forms
+*/
+.input {
+  margin: auto;
+  width: 90%;
+  height: auto;
+  border-radius: 4px;
+  background-color: var(--input-bg-color);
+  padding: 8px 0px;
+  font-size: large;
+  margin-top: 2%;
+}
+
+/* 
+    Icon for items
+*/
+.input-addon {
+  float: left;
+  background-color: var(--input-bg-color);
+  border: 1px solid var(--input-bg-color);
+  padding: 4px 8px;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+}
+
+input[type="text"] {
+  color: var(--input-text-color);
+  margin-left: 0;
+  background-color: var(--input-bg-color);
+  border: 1px solid var(--input-bg-color);
+  padding: 6px 0px;
+  border-radius: 3px;
+  font-size: large;
+}
+
+input[type="text"]:focus {
+  border: 1px solid var(--input-bg-color);
+}
+
+input[type="password"] {
+  color: var(--input-text-color);
+  margin: 0;
+  background-color: var(--input-bg-color);
+  border: 1px solid var(--input-bg-color);
+  padding: 6px 0px;
+  border-radius: 3px;
+  font-size: large;
+}
+
+input[type="password"]:focus {
+  border: 1px solid var(--input-bg-color);
+}
+
+input[type="email"] {
+  color: var(--input-text-color);
+  margin: 0;
+  background-color: var(--input-bg-color);
+  border: 1px solid var(--input-bg-color);
+  padding: 6px 0px;
+  border-radius: 3px;
+  font-size: large;
+}
+
+input[type="email"]:focus {
+  border: 1px solid var(--input-bg-color);
+}
+
+.forgot-password {
+  position: relative;
+  bottom: 0%;
+}
+
+.forgot-password a:link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.forgot-password a:visited {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  color: #ffffff;
+}
+
+.privacy {
+  margin: 5px;
+  padding: 20px;
+  color: var(--input-bg-color);
+  position: relative;
+  font-size: medium;
+  bottom: 0%;
+}
+
+.privacy a:link {
+  color: var(--input-bg-color);
+  text-decoration: none;
+}
+
+.privacy a:visited {
+  color: var(--input-bg-color);
+  text-decoration: none;
+}
+
+.privacy a:hover {
+  color: var(--input-bg-color);
+  transition: color 1s;
+}
+
+.checkboxitem {
+  margin: 5% 0;
+}
+
+input[type="submit"] {
+  margin: 10px;
+  padding: 10px 30px;
+  background: #373e4a;
+  color: var(--text-color);
+  border: 0 none;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: larger;
+}
+
+.switch {
+  margin: auto;
+  padding: 16px 16px;
+  text-align: center;
+  margin-top: 5%;
+  width: 85%;
+  border-top: 1px solid var(--text-color); /* Draw a line */
+  font-size: larger;
+}
